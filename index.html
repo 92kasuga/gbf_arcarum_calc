@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轉世素材計算器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <h1>轉世素材計算器</h1>
+        <p>本計算器以賢者為目標，計算包含到角色滿突為止的素材量。</p>
+    </header>
+    <section>
+    <div>
+    <!--選擇對象-->
+    <form>
+        <h3>召喚突破狀態：</h3>
+        <select name="summon">
+            <option value="0">未持有召喚</option>
+            <option value="1">SR0突</option>
+            <option value="2">SR1突</option>
+            <option value="3">SR2突</option>
+            <option value="4">SR3突</option>
+            <option value="5">SSR</option>
+            <option value="6">SSR終突</option>
+        </select>
+    </form>
+    </div>
+    <div class="left">
+    <!--填寫資料-->
+    <form>
+        <h3>輸入現有素材</h3>
+        <p>
+            <label for="sephiraStone"><img src="images/sephira.jpg"></label>
+            <input name="sephiraStone" id="sephiraStone" type="number">
+        </p>
+        <p>
+            <label for="astra"><img src="images/astra.jpg"></label>
+            <input name="astra" id="astra" type="number">
+        </p>
+        <p>
+            <label for="idean"><img src="images/idean.jpg"></label for=>
+            <input name="idean" id="idean" type="number">
+        </p>
+    </form>
+    </div>
+    <!--不足數量-->
+    <div class="right">
+        <h3>尚缺素材</h3>
+        <p><img src="images/sephira.jpg"><span id="sephiraDisplay">137</span></p>
+        <p><img src="images/astra.jpg"><span id="astraDisplay">314</span></p>
+        <p><img src="images/idean.jpg"><span id="ideanDisplay">79</span></p>
+    </div>
+    <button>計算</button>
+    </section>
+    </div>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    background-image: url("images/map-of-the-world.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.container {
+    margin: auto;
+    padding-top: 30px;
+    padding-left: 50px;
+    text-align: left;
+    width: 50%;
+    min-width: 500px;
+    height: 90vh;
+    background: white;
+}
+header {
+    padding-bottom: 20px;
+}
+p img {
+    width: 50px;
+    height: 50px;
+}
+span {
+    margin-left: 10px;
+    font-size: 30px;
+}
+.left {
+    float: left;
+    width: 50%;
+}
