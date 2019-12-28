@@ -31,3 +31,7 @@ span {
     float: left;
     width: 50%;
 }
+footer {
+    text-align: right;
+    background: rgba(0, 0, 0, 0);
+}
