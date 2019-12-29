@@ -7,12 +7,14 @@
     <link rel="icon" href="images/icon_point.ico" type="image/x-icon">
     <title>賢者計算機</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/992a2e3160.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
     <header>
         <h1>賢者計算機</h1>
-        <p>本計算機以賢者為目標，計算包含到角色滿突為止所需的素材量。</p>
+        <p>本計算機以做出賢者為目標，計算包含到角色滿突為止所需的素材量。</p>
+        <p>底下估算僅供參考僅供參考僅供參考，趕不上古戰別找我。</p>
     </header>
     <section>
     <div>
@@ -33,19 +35,19 @@
     </div>
     <div class="left">
     <!--填寫資料-->
-    <form>
+    <form name="item" id="item">
         <h3>輸入現有素材：</h3>
         <p>
-            <label for="sephiraStone"><img src="images/sephira.jpg"></label>
-            <input name="sephiraStone" id="sephiraStone" type="number">
+            <label><img src="images/sephira.jpg">
+            <input name="sephiraOwn" type="number"></label>
         </p>
         <p>
-            <label for="astra"><img src="images/astra.jpg"></label>
-            <input name="astra" id="astra" type="number">
+            <label><img src="images/astra.jpg">
+            <input name="astraOwn" type="number"></label>
         </p>
         <p>
-            <label for="idean"><img src="images/idean.jpg"></label>
-            <input name="idean" id="idean" type="number">
+            <label><img src="images/idean.jpg">
+            <input name="ideanOwn" type="number"></label>
         </p>
     </form>
     </div>
@@ -65,21 +67,37 @@
     <section>
         <h2>進度估算</h2>
         <h3>票數估算</h3>
-        <p><label for="needNum">需要的屬精或idea數量：</label>
-        <input name="needNum" id="needNum" type="number"></p>
-        <p><label for="estmNum">預估每一輪(9票)可拿到的素材量：</label>
-        <input name="estmNum" id="estmNum" type="number">
-        　(保守參考：屬精9個；idea4個)
+        <form name="ticket" id="ticket">
+        <p><label>需要的屬精或idea數量：
+        <input name="needNum" type="number"></label>
+        <label><input name="needType" type="radio" value="astra" checked> 屬精</label>
+        <label><input name="needType" type="radio" value="idean"> idea</label>
         </p>
+        <p style="display: inline-block">
+            <label>預估每一輪(9票)可拿到的素材量：<input name="estmNum" type="number"></label>
+            <div class="tooltip">
+                　<i class="fas fa-question-circle"></i>
+                <span class="tooltiptext">參考：一輪點數全換屬精+掉落約13個；idea約4個。</span>
+            </div>
+        </p>
+        <p><label>預估送3w點的次數(假設全換屬精)：<input name="estmPoint" type="number"></label>
+        </p>
+        </form>
         <button>計算</button>
-        <p>預估所需票數：<span id="ticket"> ? </span> 張</p>
+        <p>預估所需票數：<span id="estmTicket"> ? </span> 張</p>
         <hr>
-        <h3>日期估算</h3>
-        <p><label for="today">輸入現在日期：</label>
-        <input name="today" id="month" type="number" style="width:46px"> 月 
-        <input name="today" id="date" type="number" style="width:46px"> 日 
-        <p><label for="days">要加的天數：</label>
-        <input name="days" id="days" type="number"></p>
+        <h3 style="display: inline-block">日期估算</h3>
+        <div class="tooltip">
+            <i class="fas fa-question-circle"></i>
+            <span class="tooltiptext">預設2020年，預估日期=現在日期+所需天數-加倍天數</span>
+        </div>
+        <form name="dateCheck" id="dateCheck">
+        <p><label>輸入現在日期：
+        <input name="month" type="number" style="width:46px"> 月 
+        <input name="date" type="number" style="width:46px"> 日 </label></p>
+        <p><label>預估所需天數：<input name="days" type="number"></label></p>
+        <p><label>票加倍持續天數：<input name="deDays" type="number"></label></p>
+        </form>
         <button>計算</button>
         <p>預估達成日期：<span id="estmDate"> ? </span></p>
     </p>

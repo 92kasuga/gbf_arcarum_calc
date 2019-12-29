@@ -1,30 +1,23 @@
-//現有素材
-var sephiraOwn = document.querySelector("#sephiraStone");
-var astraOwn = document.querySelector("#astra");
-var ideanOwn = document.querySelector("#idean");
 //設定召喚
 var summon = document.querySelector("select");
 var getSummon = 0;
+//現有素材
+var formItem = document.querySelector("#item")
 //顯示不足的數量
 var sephiraLack = document.querySelector("#sephiraLack");
 var astraLack = document.querySelector("#astraLack");
 var ideanLack = document.querySelector("#ideanLack");
-//計算按鈕
 var calLackNum = document.querySelector("button");
-//取得點數
+//點數換算
 var point = document.querySelector("#point");
-//顯示換算的精柱數量
 var sephiraNum = document.querySelector("#sephiraNum");
 var astraNum = document.querySelector("#astraNum");
 //估算素材
-var needNum = document.querySelector("#needNum");
-var estmNum = document.querySelector("#estmNum");
-var ticket = document.querySelector("#ticket");
+var formTicket = document.querySelector("#ticket")
+var ticket = document.querySelector("#estmTicket");
 var calTicket = document.querySelectorAll("button")[1];
 //日期
-var nMonth = document.querySelector("#month");
-var nDate = document.querySelector("#date");
-var ndays = document.querySelector("#days");
+var dateCheck = document.querySelector("#dateCheck")
 var estmtDate = document.querySelector("#estmDate");
 var calDate = document.querySelectorAll("button")[2];
 
@@ -37,12 +30,12 @@ summon.addEventListener("change", function(){
 })
 //執行計算
 calLackNum.addEventListener("click", function(){
-    sephiraLack.textContent = sephiraLack.textContent - sephiraOwn.value;
-    astraLack.textContent = astraLack.textContent - astraOwn.value;
-    ideanLack.textContent = ideanLack.textContent - ideanOwn.value;
-    sephiraOwn.value = 0;
-    astraOwn.value = 0;
-    ideanOwn.value = 0;
+    sephiraLack.textContent = sephiraLack.textContent - formItem.sephiraOwn.value;
+    astraLack.textContent = astraLack.textContent - formItem.astraOwn.value;
+    ideanLack.textContent = ideanLack.textContent - formItem.ideanOwn.value;
+    formItem.sephiraOwn.value = 0;
+    formItem.astraOwn.value = 0;
+    formItem.ideanOwn.value = 0;
 })
 //點數換算
 point.addEventListener("change", function(){
@@ -53,19 +46,32 @@ point.addEventListener("change", function(){
 })
 //顯示預估的票數
 calTicket.addEventListener("click", function(){
-    var estimate = needNum.value / estmNum.value * 9;
+    if (getType() === "astra"){
+        var estimate = (formTicket.needNum.value - formTicket.estmPoint.value * 20) / formTicket.estmNum.value * 9;
+    }else {
+        var estimate = formTicket.needNum.value / formTicket.estmNum.value * 9;
+    }
     ticket.textContent = Math.ceil(estimate);
 })
 //日期計算
 calDate.addEventListener("click", function(){
-var startDate = new Date(2020, nMonth.value-1, nDate.value);
-var intValue = 0; 
-var endDate = null; 
-intValue = startDate.getTime();
-intValue += ndays.value * (24 * 3600 * 1000); 
-endDate = new Date(intValue); 
-estmDate.textContent = (endDate.getMonth() + 1) + "月" + endDate.getDate() + "日"; 
+    var startDate = new Date(2020, dateCheck.month.value-1, dateCheck.date.value);
+    var intValue = 0; 
+    var endDate = null; 
+    intValue = startDate.getTime();
+    intValue += (dateCheck.days.value - dateCheck.deDays.value) * (24 * 3600 * 1000); 
+    endDate = new Date(intValue); 
+    estmDate.textContent = (endDate.getMonth() + 1) + "月" + endDate.getDate() + "日"; 
 })
+//取得預估票數使用的素材類型
+function getType(){
+    for(var i=0; i<formTicket.needType.length;i++){
+        if(formTicket.needType[i].checked){
+            var needType = formTicket.needType[i].value;
+            return needType;
+        }
+    }
+}
 //根據召喚狀換顯示不足的數量
 function cal(){
     switch (getSummon){
