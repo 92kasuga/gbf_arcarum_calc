@@ -17,11 +17,27 @@ body {
 header {
     padding-bottom: 20px;
 }
+table {
+    text-align: center;
+    width: 80%;
+    line-height: 2em;
+    border: 1px solid #777;
+    border-collapse:collapse;
+}
+tr {
+    border: 1px solid #777;
+}
+td {
+    border: 1px solid #777;
+}
 h2 {
     margin-top: 30px;
     margin-left: -30px;
     margin-right: 30px;
     border-bottom: 2px solid #777;
+}
+hr+h3 {
+    margin: 0 0 0 0;
 }
 i {
     font-size: 0.8em;
@@ -35,8 +51,7 @@ div.right span {
     font-size: 30px;
 }
 hr {
-    margin-top: 30px;
-    margin-right: 30px;
+    margin: 30px 30px 19px 0px;
 }
 .left {
     float: left;
@@ -57,15 +72,19 @@ footer {
     display: inline-block;
 }
 .tooltip .tooltiptext {
-    visibility: hidden;
+    display: none;
     width: 380px;
     border: 1px solid #000;
     background-color: #fff999;
     text-align: center;
     font-weight: 100;
     position: absolute;
-    z-index: 1;
 }
 .tooltip:hover .tooltiptext {
-    visibility: visible;
+    display: inline-block;
+}
+@media (max-width: 540px) {
+    .tooltip:hover .tooltiptext {
+        display: none;
+    }
 }

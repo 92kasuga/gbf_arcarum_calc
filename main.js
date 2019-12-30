@@ -8,6 +8,7 @@ var sephiraLack = document.querySelector("#sephiraLack");
 var astraLack = document.querySelector("#astraLack");
 var ideanLack = document.querySelector("#ideanLack");
 var calLackNum = document.querySelector("button");
+var done = document.querySelector("#done");
 //點數換算
 var point = document.querySelector("#point");
 var sephiraNum = document.querySelector("#sephiraNum");
@@ -36,6 +37,8 @@ calLackNum.addEventListener("click", function(){
     formItem.sephiraOwn.value = 0;
     formItem.astraOwn.value = 0;
     formItem.ideanOwn.value = 0;
+    var doneDisplay = 1 - [(Number(sephiraLack.textContent) + Number(astraLack.textContent) + Number(ideanLack.textContent))/ 530 ];
+    done.textContent = toPercent(doneDisplay);
 })
 //點數換算
 point.addEventListener("change", function(){
@@ -63,6 +66,11 @@ calDate.addEventListener("click", function(){
     endDate = new Date(intValue); 
     estmDate.textContent = (endDate.getMonth() + 1) + "月" + endDate.getDate() + "日"; 
 })
+//轉換百分比
+function toPercent(p){
+    var str=Number(p*100).toFixed(1);
+    return str;
+}
 //取得預估票數使用的素材類型
 function getType(){
     for(var i=0; i<formTicket.needType.length;i++){

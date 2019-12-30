@@ -14,7 +14,79 @@
     <header>
         <h1>GBF 賢者計算機</h1>
         <p>本計算機以專心衝一個賢者為目標，計算包含到角色滿突為止所需的素材量。</p>
-        <p>底下估算僅供參考僅供參考僅供參考，趕不上古戰別找我。</p>
+        <details>
+            <summary>一些補充說明</summary>
+            <p>各素材來源參考：</p>
+            <table>
+                <tr>
+                    <td></td>
+                    <td>セフィラストーン(柱子)</td>
+                    <td>アストラ(屬精)</td>
+                    <td>イデア(idea)</td>
+                </tr>
+                <tr>
+                    <td>點數兌換</td>
+                    <td>2000點/個</td>
+                    <td>1500點/個</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>每月劇活</td>
+                    <td>8</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>9-3王</td>
+                    <td>3</td>
+                    <td>2~4</td>
+                    <td>3~5</td>
+                </tr>
+                <tr>
+                    <td>9-3紅箱</td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>斗篷人</td>
+                    <td></td>
+                    <td>2~4</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>紅怪</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>特殊怪</td>
+                    <td>1~2</td>
+                    <td>1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>單體怪</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>金箱怪</td>
+                    <td></td>
+                    <td>1</td>
+                    <td>0~1</td>
+                </tr>
+                <tr>
+                    <td>地圖金箱</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </table>
+            <p>疊寶有效對象：特殊怪、金箱怪、斗篷人。</p>
+        </details>
     </header>
     <section>
     <div>
@@ -59,8 +131,9 @@
         <p><img src="images/idean.jpg"><span id="ideanLack">79</span></p>
     </div>
         <button>計算</button>
+        <p>賢者完成度：<span id="done">0</span>%</p>
         <hr>
-        <h3>點數換算</h3>
+        <h3>點數換算</h3><br>
         <input name="point" id="point" type="number">
         點數　等於 <span id="sephiraNum">0</span> 柱子或 <span id="astraNum">0</span> 屬精。
     </section>
@@ -77,21 +150,20 @@
             <label>預估每一輪(9票)可拿到的素材量：<input name="estmNum" type="number"></label>
             <div class="tooltip">
                 　<i class="fas fa-question-circle"></i>
-                <span class="tooltiptext">加點數換的屬精約17個；idea約5個，依屬性自己加減</span>
+                <span class="tooltiptext">加點數換的屬精約16個；idea約5個，依屬性自己加減</span>
             </div>
         </p>
-        <p><label>預估送3w點的次數(假設全換屬精)：<input name="estmPoint" type="number"></label>
-        </p>
+        <p><label>預估送3w點的次數(假設全換屬精)：<input name="estmPoint" type="number"></label></p>
         </form>
         <button>計算</button>
-        <p>預估所需票數：<span id="estmTicket"> ? </span> 張</p>
+        <p>預估所需票數：<span id="estmTicket"> 0 </span> 張</p>
         <hr>
         <h3 style="display: inline-block">日期估算</h3>
         <div class="tooltip">
             <i class="fas fa-question-circle"></i>
             <span class="tooltiptext">預設2020年，預估日期=現在日期+所需天數-加倍天數</span>
         </div>
-        <form name="dateCheck" id="dateCheck">
+        <form name="dateCheck" id="dateCheck" style="clear: both">
         <p><label>輸入現在日期：
         <input name="month" type="number" style="width:46px"> 月 
         <input name="date" type="number" style="width:46px"> 日 </label></p>
