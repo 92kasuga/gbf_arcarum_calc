@@ -87,6 +87,9 @@ footer {
     display: inline-block;
 }
 @media (max-width: 540px) {
+    footer {
+        display: none
+    }
     .tooltip .tooltiptext {
         position: absolute;
         bottom: 20px;
