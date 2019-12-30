@@ -31,9 +31,9 @@ summon.addEventListener("change", function(){
 })
 //執行計算
 calLackNum.addEventListener("click", function(){
-    sephiraLack.textContent = sephiraLack.textContent - formItem.sephiraOwn.value;
-    astraLack.textContent = astraLack.textContent - formItem.astraOwn.value;
-    ideanLack.textContent = ideanLack.textContent - formItem.ideanOwn.value;
+    sephiraLack.textContent = minusToZero(sephiraLack.textContent,formItem.sephiraOwn.value);
+    astraLack.textContent = minusToZero(astraLack.textContent,formItem.astraOwn.value);
+    ideanLack.textContent = minusToZero(ideanLack.textContent,formItem.ideanOwn.value);
     formItem.sephiraOwn.value = 0;
     formItem.astraOwn.value = 0;
     formItem.ideanOwn.value = 0;
@@ -66,9 +66,18 @@ calDate.addEventListener("click", function(){
     endDate = new Date(intValue); 
     estmDate.textContent = (endDate.getMonth() + 1) + "月" + endDate.getDate() + "日"; 
 })
+//負數歸零
+function minusToZero(a,b){
+    var total = a - b;
+    if(total < 0){
+        return 0;
+    } else {
+        return total;
+    }
+}
 //轉換百分比
-function toPercent(p){
-    var str=Number(p*100).toFixed(1);
+function toPercent(point){
+    var str=Number(point*100).toFixed(1);
     return str;
 }
 //取得預估票數使用的素材類型
