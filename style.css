@@ -87,6 +87,9 @@ footer {
     display: inline-block;
 }
 @media (max-width: 540px) {
+    body {
+        margin: 0;
+    }
     footer {
         display: none
     }
@@ -94,5 +97,8 @@ footer {
         position: absolute;
         bottom: 20px;
         right: -80px;
+    }
+    input {
+        max-width: 120px;
     }
 }
