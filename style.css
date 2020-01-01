@@ -93,6 +93,9 @@ input.needNum{
     body {
         margin: 0;
     }
+    table {
+        width: 100%;
+    }
     footer {
         display: none
     }

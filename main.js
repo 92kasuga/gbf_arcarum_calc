@@ -1,6 +1,6 @@
 //設定召喚
 var summon = document.querySelector("select");
-var getSummon = 0;
+var summonInput = 0;
 //現有素材
 var formItem = document.querySelector("#item")
 //顯示不足的數量
@@ -8,6 +8,7 @@ var sephiraLack = document.querySelector("#sephiraLack");
 var astraLack = document.querySelector("#astraLack");
 var ideanLack = document.querySelector("#ideanLack");
 var calLackNum = document.querySelector("button");
+var resetLackNum = document.querySelectorAll("button")[1];
 var done = document.querySelector("#done");
 //點數換算
 var point = document.querySelector("#point");
@@ -16,29 +17,29 @@ var astraNum = document.querySelector("#astraNum");
 //估算素材
 var formTicket = document.querySelector("#ticket")
 var ticket = document.querySelector("#estmTicket");
-var calTicket = document.querySelectorAll("button")[1];
+var calTicket = document.querySelectorAll("button")[2];
 //日期
 var dateCheck = document.querySelector("#dateCheck")
 var estmtDate = document.querySelector("#estmDate");
-var calDate = document.querySelectorAll("button")[2];
+var calDate = document.querySelectorAll("button")[3];
 
 //獲取召喚狀態
 summon.addEventListener("change", function(){
-    for(var i = 0; i < summon.length; i++){
-        getSummon = Number(summon.value);
-        cal();
-    }
+    getSummon();
 })
 //執行計算
 calLackNum.addEventListener("click", function(){
     sephiraLack.textContent = minusToZero(sephiraLack.textContent,formItem.sephiraOwn.value);
     astraLack.textContent = minusToZero(astraLack.textContent,formItem.astraOwn.value);
     ideanLack.textContent = minusToZero(ideanLack.textContent,formItem.ideanOwn.value);
-    formItem.sephiraOwn.value = 0;
-    formItem.astraOwn.value = 0;
-    formItem.ideanOwn.value = 0;
     var doneDisplay = 1 - [(Number(sephiraLack.textContent) + Number(astraLack.textContent) + Number(ideanLack.textContent))/ 530 ];
     done.textContent = toPercent(doneDisplay);
+    clear();
+})
+resetLackNum.addEventListener("click",function(){
+    getSummon();
+    clear();
+    done.textContent = 0;
 })
 //點數換算
 point.addEventListener("change", function(){
@@ -90,8 +91,8 @@ function getType(){
     }
 }
 //根據召喚狀換顯示不足的數量
-function cal(){
-    switch (getSummon){
+function summonList(){
+    switch (summonInput){
         case 0:
         sephiraLack.textContent = 137;
         astraLack.textContent = 314;
@@ -128,4 +129,16 @@ function cal(){
             ideanLack.textContent = 22;
             break;
     }
+}
+//獲取召喚狀態
+function getSummon(){
+    for(var i = 0; i < summon.length; i++){
+        summonInput = Number(summon.value);
+        summonList();
+    }
+}
+function clear(){
+    formItem.sephiraOwn.value = 0;
+    formItem.astraOwn.value = 0;
+    formItem.ideanOwn.value = 0;
 }
