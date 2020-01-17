@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="images/icon_point.ico" type="image/x-icon">
     <title>賢者計算機</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/992a2e3160.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -14,8 +14,9 @@
     <header>
         <h1>GBF 賢者計算機</h1>
         <p>本計算機以專心衝一個賢者為目標，計算包含到角色滿突為止所需的素材量。</p>
+        <!--============摺疊資訊============-->
         <details>
-            <summary>一些補充說明</summary>
+            <summary>素材相關資訊</summary>
             <p>各素材來源參考：</p>
             <table>
                 <tr>
@@ -31,7 +32,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>每月劇活</td>
+                    <td>月底活動</td>
                     <td>8</td>
                     <td></td>
                     <td></td>
@@ -49,7 +50,7 @@
                     <td>1</td>
                 </tr>
                 <tr>
-                    <td>斗篷人</td>
+                    <td><strong>斗篷人</strong></td>
                     <td></td>
                     <td>2~4</td>
                     <td>1</td>
@@ -61,7 +62,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>特殊怪</td>
+                    <td><strong>特殊怪</strong></td>
                     <td>1~2</td>
                     <td>1</td>
                     <td></td>
@@ -73,7 +74,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>金箱怪</td>
+                    <td><strong>金箱怪</strong></td>
                     <td></td>
                     <td>1</td>
                     <td>*1</td>
@@ -86,13 +87,13 @@
                 </tr>
             </table>
             <p>*表示非必出。</p>
-            <p>疊寶有效對象：特殊怪、金箱怪、斗篷人。</p>
+            <p><strong>疊寶有效對象</strong>：斗篷人、特殊怪、金箱怪。</p>
         </details>
     </header>
     <section>
     <div>
         <h2>素材計算</h2>
-    <!--選擇對象-->
+    <!--============下拉式選單============-->
     <form>
         <h3>召喚突破狀態：</h3>
         <select name="summon">
@@ -107,7 +108,7 @@
     </form>
     </div>
     <div class="left">
-    <!--填寫資料-->
+    <!--============輸入素材============-->
     <form name="item" id="item">
         <h3>輸入現有素材：</h3>
         <p>
@@ -124,7 +125,7 @@
         </p>
     </form>
     </div>
-    <!--不足數量-->
+    <!--============顯示不足數量============-->
     <div class="right">
         <h3>尚缺素材：</h3>
         <p><img src="images/sephira.jpg"><span id="sephiraLack">137</span></p>
@@ -140,21 +141,28 @@
     </section>
     <section>
         <h2>進度估算</h2>
-        <h3>票數估算</h3>
+        <h3 style="display: inline-block">票數估算</h3>
+        <div class="tooltip">
+            <i class="fas fa-question-circle"></i>
+            <span class="tooltiptext f">請選擇最缺的素材當基準。</span>
+        </div>
+        <!--============票數表單============-->
         <form name="ticket" id="ticket">
-        <p><label>需要的屬精或idea數量：
-        <input name="needNum" type="number" class="needNum"></label>
+        <p><label>需要的素材量：
+        <input name="needNum" type="number" class="needNum" style="width:100px"></label>
         <label><input name="needType" type="radio" value="astra" checked> 屬精</label>
+        <label><input name="needType" type="radio" value="sephira"> 柱子</label>
         <label><input name="needType" type="radio" value="idean"> idea</label>
         </p>
-        <p style="display: inline-block">
-            <label>預估每一輪(9票)可拿到的素材量：<input name="estmNum" type="number"style="width:140px"></label>
+        <p style="display: inline-block; margin: 0">
+            <label>預估每一輪(9票)可拿到的素材量：<input name="estmNum" type="number" style="width:140px"></label>
             <div class="tooltip">
                 　<i class="fas fa-question-circle"></i>
-                <span class="tooltiptext">假設點數全換屬精約16個；idea約5個，視路線決定。</span>
+                <span class="tooltiptext s">假設點數全換屬精約16個；idea約5個，視路線決定。</span>
             </div>
         </p>
-        <p><label>預估送3w點的次數(假設全換屬精)：<input name="estmPoint" type="number"></label></p>
+        <p><label>預估月底活動次數(假設柱子全拿)：<input name="estmStone" type="number"></label></p>
+        <p><label>預估送3w點的次數(全換所選素材)：<input name="estmEvent" type="number"></label></p>
         </form>
         <button>計算</button>
         <p>預估所需票數：<span id="estmTicket"> 0 </span> 張</p>
@@ -162,8 +170,9 @@
         <h3 style="display: inline-block">日期估算</h3>
         <div class="tooltip">
             <i class="fas fa-question-circle"></i>
-            <span class="tooltiptext">預設2020年，預估日期=現在日期+所需天數-加倍天數</span>
+            <span class="tooltiptext t">預設2020年，預估日期=現在日期+所需天數-加倍天數</span>
         </div>
+        <!--============日期表單============-->
         <form name="dateCheck" id="dateCheck" style="clear: both">
         <p><label>輸入現在日期：
         <input name="month" type="number" style="width:46px"> 月 
@@ -173,10 +182,9 @@
         </form>
         <button>計算</button>
         <p>預估達成日期：<span id="estmDate"> ? </span></p>
-    </p>
     </section>
     </div>
-    <footer><p>ver1.1 made by autumnkuri</p></footer>
-<script src="main.js"></script>
+    <footer><p>ver1.2 made by autumnkuri</p></footer>
+<script type="text/javascript" src="main.js"></script>
 </body>
 </html>

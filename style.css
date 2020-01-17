@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-image: url("images/map-of-the-world.jpg");
+    background-image: url("images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -27,19 +27,13 @@ table {
     border: 1px solid #777;
     border-collapse:collapse;
 }
-tr {
-    border: 1px solid #777;
-}
-td {
+tr, td {
     border: 1px solid #777;
 }
 h2 {
     margin-top: 30px;
     margin-left: -30px;
     border-bottom: 2px solid #777;
-}
-hr+h3 {
-    margin: 0 0 0 0;
 }
 i {
     font-size: 0.8em;
@@ -59,6 +53,12 @@ hr {
     float: left;
     width: 50%;
 }
+hr+h3, h2+h3 {
+    margin: 0;
+}
+#ticket {
+    line-height: 2.3em;
+}
 #dateCheck {
     line-height: 2.3em;
 }
@@ -68,6 +68,9 @@ footer {
     bottom: 0;
     right: 0;
 }
+footer p {
+    color: #fff;
+}
 /*提示文字框*/
 .tooltip {
     position: relative;
@@ -76,18 +79,25 @@ footer {
 .tooltip .tooltiptext {
     display: none;
     height: 1.2em;
-    width: 310px;
     border: 1px solid #000;
     background-color: #fff999;
     text-align: center;
     font-size: 0.8em;
     position: absolute;
 }
+.tooltip .f {
+    width: 165px;
+}
+.tooltip .s {
+    width: 300px;
+    line-height: normal;
+    bottom: 10px;
+}
+.tooltip .t {
+    width: 310px;
+}
 .tooltip:hover .tooltiptext {
     display: inline-block;
-}
-input.needNum{
-    width:120px
 }
 @media (max-width: 540px) {
     body {
@@ -99,10 +109,20 @@ input.needNum{
     footer {
         display: none
     }
-    .tooltip .tooltiptext {
+    .tooltip .f {
         position: absolute;
-        bottom: 20px;
-        right: -80px;
+        bottom: 0;
+        right: -170px;
+    }
+    .tooltip .s {
+        position: absolute;
+        bottom: 30px;
+        right: 0;
+    }
+    .tooltip .t {
+        position: absolute;
+        bottom: 0;
+        right: -315px;
     }
     input.needNum{
         max-width:80px

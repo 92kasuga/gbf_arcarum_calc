@@ -27,7 +27,7 @@ var calDate = document.querySelectorAll("button")[3];
 summon.addEventListener("change", function(){
     getSummon();
 })
-//執行計算
+//所需素材計算
 calLackNum.addEventListener("click", function(){
     sephiraLack.textContent = minusToZero(sephiraLack.textContent,formItem.sephiraOwn.value);
     astraLack.textContent = minusToZero(astraLack.textContent,formItem.astraOwn.value);
@@ -36,6 +36,7 @@ calLackNum.addEventListener("click", function(){
     done.textContent = toPercent(doneDisplay);
     clear();
 })
+//所需素材重置
 resetLackNum.addEventListener("click",function(){
     getSummon();
     clear();
@@ -48,11 +49,13 @@ point.addEventListener("change", function(){
     sephiraNum.textContent = converSephira;
     astraNum.textContent = converAstra;
 })
-//顯示預估的票數
+//計算並顯示預估票數
 calTicket.addEventListener("click", function(){
     if (getType() === "astra"){
-        var estimate = (formTicket.needNum.value - formTicket.estmPoint.value * 20) / formTicket.estmNum.value * 9;
-    }else {
+        var estimate = (formTicket.needNum.value - formTicket.estmEvent.value * 20) / formTicket.estmNum.value * 9;
+    } else if (getType() === "sephira"){
+        var estimate = (formTicket.needNum.value - formTicket.estmStone.value * 8 - formTicket.estmEvent.value * 15) / formTicket.estmNum.value * 9;
+    } else {
         var estimate = formTicket.needNum.value / formTicket.estmNum.value * 9;
     }
     ticket.textContent = Math.ceil(estimate);
@@ -137,6 +140,7 @@ function getSummon(){
         summonList();
     }
 }
+//重製輸入的素材量
 function clear(){
     formItem.sephiraOwn.value = 0;
     formItem.astraOwn.value = 0;
