@@ -35,8 +35,9 @@ h2 {
     margin-left: -30px;
     border-bottom: 2px solid #777;
 }
-i {
-    font-size: 0.8em;
+.tooltip>img {
+    height: 0.8em;
+    width: 0.8em;
 }
 p img {
     width: 50px;
