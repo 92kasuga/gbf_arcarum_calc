@@ -1,1 +1,0 @@
-# gbf_arcarum_calc
